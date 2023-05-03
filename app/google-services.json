@@ -1,18 +1,27 @@
 {
   "project_info": {
     "project_number": "689430902915",
+    "firebase_url": "https://gpstracking-c7429-default-rtdb.europe-west1.firebasedatabase.app",
     "project_id": "gpstracking-c7429",
     "storage_bucket": "gpstracking-c7429.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:689430902915:android:5a7ee04c038a6f99c043b6",
+        "mobilesdk_app_id": "1:689430902915:android:c09e9051bc4336adc043b6",
         "android_client_info": {
           "package_name": "com.example.gpstracking"
         }
       },
       "oauth_client": [
+        {
+          "client_id": "689430902915-1kssoo8oeqgrrafg3pv0ut92jpp2gnbe.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.gpstracking",
+            "certificate_hash": "1e4f09ab1b419ed5fbc4dae958498ed6b3a2874e"
+          }
+        },
         {
           "client_id": "689430902915-t831lbq1juo5gjp5o5cvaqnd94lbei7g.apps.googleusercontent.com",
           "client_type": 3
