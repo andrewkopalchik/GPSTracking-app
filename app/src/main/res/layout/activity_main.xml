@@ -14,6 +14,16 @@
         android:layout_height="550dp"
         tools:layout="@layout/support_simple_spinner_dropdown_item" />
 
+
+    <Button
+        android:id="@+id/showMyLocationButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SHOW MY LOCATION"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="16dp"/>
+
+
     <EditText
         android:id="@+id/editTextTextPersonName"
         android:layout_width="wrap_content"
