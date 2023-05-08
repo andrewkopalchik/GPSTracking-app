@@ -1,11 +1,10 @@
 package com.example.gpstracking;
 
 import android.os.Build;
-
 import java.util.HashMap;
 import java.util.Map;
 
-
+import com.example.gpstracking.LocationData;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,6 +19,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.content.Intent;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -45,12 +45,12 @@ public class MainActivity extends FragmentActivity implements OnMapReadyCallback
     private final long MIN_TIME = 1000;
     private final long MIN_DIST = 5;
 
-
     private String deviceName;
 
     private EditText editTextLatitude;
     private EditText editTextLongitude;
-    private Button showMyLocationButton; // Додайте цей рядок
+    private Button showMyLocationButton;
+    private Button historyButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,11 +65,20 @@ public class MainActivity extends FragmentActivity implements OnMapReadyCallback
         editTextLatitude = findViewById(R.id.editTextTextPersonName);
         editTextLongitude = findViewById(R.id.editTextTextPersonName2);
 
-        showMyLocationButton = findViewById(R.id.showMyLocationButton); // Знайдіть кнопку у макеті
+        Intent intent = getIntent();
+        if (intent.hasExtra("latitude") && intent.hasExtra("longitude")) {
+            double latitude = intent.getDoubleExtra("latitude", 0);
+            double longitude = intent.getDoubleExtra("longitude", 0);
+            editTextLatitude.setText(String.valueOf(latitude));
+            editTextLongitude.setText(String.valueOf(longitude));
+        }
+
+
+        showMyLocationButton = findViewById(R.id.showMyLocationButton);
         showMyLocationButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                showCurrentLocation(); // Виклик методу для відображення поточного місцезнаходження на мапі
+                showCurrentLocation();
             }
         });
 
@@ -107,6 +116,18 @@ public class MainActivity extends FragmentActivity implements OnMapReadyCallback
             }
         });
 
+        //HISTORY_LIST
+
+        historyButton = findViewById(R.id.historyButton);
+        historyButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent historyIntent = new Intent(MainActivity.this, HistoryActivity.class);
+                startActivity(historyIntent);
+            }
+        });
+
+        //HISTORY_LIST
     }
 
     @Override
@@ -162,19 +183,26 @@ public class MainActivity extends FragmentActivity implements OnMapReadyCallback
         databaseReference.push().setValue(locationData);
     }
 
-    // Додайте цей новий метод
     private void showCurrentLocation() {
         if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            // Запитайте дозволу, якщо він ще не наданий
             ActivityCompat.requestPermissions(this, new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION, android.Manifest.permission.ACCESS_COARSE_LOCATION}, 1);
         } else {
-            // Отримайте поточне місцезнаходження
             Location currentLocation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
 
             if (currentLocation != null) {
                 LatLng currentLatLng = new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude());
                 mMap.addMarker(new MarkerOptions().position(currentLatLng).title("Моє місцезнаходження"));
                 mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(currentLatLng, 15));
+
+                long currentTime = System.currentTimeMillis();
+
+                Map<String, Object> locationData = new HashMap<>();
+                locationData.put("Ім'я девайсу", deviceName);
+                locationData.put("Широта", currentLocation.getLatitude());
+                locationData.put("Довжина", currentLocation.getLongitude());
+                locationData.put("Час", currentTime);
+
+                databaseReference.push().setValue(locationData);
             }
         }
     }

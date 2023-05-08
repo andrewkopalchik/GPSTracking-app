@@ -6,23 +6,29 @@
     tools:context=".MainActivity">
 
 
-
     <fragment
-        android:name="com.google.android.gms.maps.SupportMapFragment"
         android:id="@+id/map"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="match_parent"
         android:layout_height="550dp"
         tools:layout="@layout/support_simple_spinner_dropdown_item" />
+
+    <Button
+        android:id="@+id/historyButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="History"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="8dp"/>
 
 
     <Button
         android:id="@+id/showMyLocationButton"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="SHOW MY LOCATION"
+        android:layout_height="54dp"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="16dp"/>
-
+        android:layout_marginTop="16dp"
+        android:text="SHOW MY LOCATION" />
 
     <EditText
         android:id="@+id/editTextTextPersonName"
