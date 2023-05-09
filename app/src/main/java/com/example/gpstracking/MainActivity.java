@@ -74,6 +74,7 @@ public class MainActivity extends FragmentActivity implements OnMapReadyCallback
         editTextLatitude = findViewById(R.id.editTextTextPersonName);
         editTextLongitude = findViewById(R.id.editTextTextPersonName2);
         startButton = findViewById(R.id.startButton);
+        stopButton = findViewById(R.id.stopButton);
         showMyLocationButton = findViewById(R.id.showMyLocationButton);
         showMyLocationButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -92,26 +93,32 @@ public class MainActivity extends FragmentActivity implements OnMapReadyCallback
             }
         });
 
-
-
         startButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startSavingCoordinates();
+                /*
+                Intent locationServiceIntent = new Intent(MainActivity.this, LocationService.class);
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                    startForegroundService(locationServiceIntent);
+                } else {
+                    startService(locationServiceIntent);
+                }
+
+                 */
             }
         });
-
-        /*
-
         stopButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 stopSavingCoordinates();
+                /*
+                Intent locationServiceIntent = new Intent(MainActivity.this, LocationService.class);
+                stopService(locationServiceIntent);
+
+                 */
             }
         });
-
-         */
-
     }
 
 
