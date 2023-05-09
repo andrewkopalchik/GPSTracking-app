@@ -1,10 +1,11 @@
 package com.example.gpstracking;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.FragmentActivity;
-
+import android.os.Handler;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -43,11 +44,20 @@ public class MainActivity extends FragmentActivity implements OnMapReadyCallback
     private LocationManager locationManager;
     private final long MIN_TIME = 1000;
     private final long MIN_DIST = 5;
+
+    private Handler coordinatesHandler;
+    private Runnable coordinatesRunnable;
+
+
     private String deviceName;
     private EditText editTextLatitude;
     private EditText editTextLongitude;
     private Button showMyLocationButton;
     private Button historyButton;
+
+    private Button startButton;
+    private Button stopButton;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,12 +73,13 @@ public class MainActivity extends FragmentActivity implements OnMapReadyCallback
 
         editTextLatitude = findViewById(R.id.editTextTextPersonName);
         editTextLongitude = findViewById(R.id.editTextTextPersonName2);
-
+        startButton = findViewById(R.id.startButton);
         showMyLocationButton = findViewById(R.id.showMyLocationButton);
         showMyLocationButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 showCurrentLocation();
+                Toast.makeText(MainActivity.this, "SAVED", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -81,6 +92,47 @@ public class MainActivity extends FragmentActivity implements OnMapReadyCallback
             }
         });
 
+
+
+        startButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startSavingCoordinates();
+            }
+        });
+
+        /*
+
+        stopButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                stopSavingCoordinates();
+            }
+        });
+
+         */
+
+    }
+
+
+
+    private void startSavingCoordinates() {
+        coordinatesHandler = new Handler();
+        coordinatesRunnable = new Runnable() {
+            @Override
+            public void run() {
+                showCurrentLocation();
+                Toast.makeText(MainActivity.this, "SAVED", Toast.LENGTH_SHORT).show();
+                coordinatesHandler.postDelayed(this, 60000); // 1 хвилина
+            }
+        };
+        coordinatesHandler.post(coordinatesRunnable);
+    }
+
+    private void stopSavingCoordinates() {
+        if (coordinatesHandler != null) {
+            coordinatesHandler.removeCallbacks(coordinatesRunnable);
+        }
     }
 
     @Override

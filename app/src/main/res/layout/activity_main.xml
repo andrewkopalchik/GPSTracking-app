@@ -13,12 +13,14 @@
         android:layout_height="550dp"
         tools:layout="@layout/support_simple_spinner_dropdown_item" />
 
+
+
     <Button
         android:id="@+id/historyButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="History"
-        android:layout_gravity="center_horizontal"
+        android:layout_gravity="left"
         android:layout_marginTop="8dp"/>
 
 
@@ -62,5 +64,13 @@
         android:layout_marginTop="600dp"
         android:onClick="updateButtonOnClick"
         android:text="@string/update" />
+
+    <Button
+        android:id="@+id/startButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Start"
+        android:gravity="right"
+        />
 
 </FrameLayout>
