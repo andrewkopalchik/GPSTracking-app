@@ -1,46 +1,28 @@
 package com.example.gpstracking;
 
-import androidx.annotation.NonNull;
+import java.io.Serializable;
 
-import java.util.Date;
-
-public class LocationData {
-    private String deviceName;
-    private String latitude;
-    private String longitude;
+public class LocationData implements Serializable {
+    private double latitude;
+    private double longitude;
     private long timestamp;
 
-    public LocationData() {
-    }
-
-    public LocationData(String deviceName, String latitude, String longitude, long timestamp) {
-        this.deviceName = deviceName;
+    public LocationData(double latitude, double longitude, long timestamp) {
         this.latitude = latitude;
         this.longitude = longitude;
         this.timestamp = timestamp;
     }
 
-    public String getDeviceName() {
-        return deviceName;
-    }
-
-    public String getLatitude() {
+    // Getters and setters
+    public double getLatitude() {
         return latitude;
     }
 
-    public String getLongitude() {
+    public double getLongitude() {
         return longitude;
     }
 
     public long getTimestamp() {
         return timestamp;
-    }
-
-    @NonNull
-    @Override
-    public String toString() {
-        return "Device: " + deviceName + "\n" +
-                "Lat: " + latitude + ", Lng: " + longitude + "\n" +
-                "Time: " + new Date(timestamp).toString();
     }
 }

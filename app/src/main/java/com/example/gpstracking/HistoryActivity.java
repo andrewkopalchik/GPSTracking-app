@@ -18,7 +18,6 @@ import java.util.List;
 import java.util.Set;
 
 public class HistoryActivity extends AppCompatActivity {
-
     private static final String SHARED_PREFS = "sharedPrefs";
     private static final String HISTORY_LIST = "historyList";
 
