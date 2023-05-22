@@ -30,50 +30,17 @@
         android:layout_marginTop="16dp"
         android:text="SHOW MY LOCATION" />
 
-    <EditText
-        android:id="@+id/editTextTextPersonName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="550dp"
-        android:ems="10"
-        android:hint="@string/latitude"
-        android:inputType="textPersonName"
-        android:minHeight="48dp"
-        android:autofillHints="" />
-
-    <EditText
-        android:id="@+id/editTextTextPersonName2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="220dp"
-        android:layout_marginTop="550dp"
-        android:ems="10"
-        android:hint="@string/Longitude"
-        android:inputType="textPersonName"
-        android:minHeight="48dp"
-        android:autofillHints="" />
-
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="150dp"
-        android:layout_marginTop="600dp"
-        android:onClick="updateButtonOnClick"
-        android:text="@string/update" />
-
     <Button
         android:id="@+id/startButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="left"
-        android:text="Start"
         android:layout_marginStart="40dp"
         android:layout_marginTop="600dp"
-        />
+        android:gravity="left"
+        android:text="Start" />
+
     <Button
-        android:id="@+id/stopButton"
+        android:id="@+id/endButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="left"
