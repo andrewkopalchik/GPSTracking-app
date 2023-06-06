@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -29,7 +30,13 @@
         android:layout_height="54dp"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="470dp"
-        android:text="SHOW MY LOCATION" />
+        android:background="#00BCD4"
+        android:backgroundTint="#00BCD4"
+        android:text="Find me"
+        app:icon="@android:drawable/ic_menu_mylocation"
+        app:iconTint="#00BCD4"
+        app:rippleColor="#00BCD4"
+        app:strokeColor="#00BCD4" />
 
     <Button
         android:id="@+id/startButton"
