@@ -13,21 +13,22 @@
         android:layout_height="550dp"
         tools:layout="@layout/support_simple_spinner_dropdown_item" />
 
+
     <Button
         android:id="@+id/historyButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="History"
         android:layout_gravity="left"
-        android:layout_marginTop="8dp"/>
-
+        android:layout_marginStart="250dp"
+        android:layout_marginTop="600dp"
+        android:text="History" />
 
     <Button
         android:id="@+id/showMyLocationButton"
         android:layout_width="wrap_content"
         android:layout_height="54dp"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="470dp"
         android:text="SHOW MY LOCATION" />
 
     <Button
@@ -45,8 +46,31 @@
         android:layout_height="wrap_content"
         android:gravity="left"
         android:text="End"
-        android:layout_marginStart="270dp"
-        android:layout_marginTop="600dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="650dp"
         />
+    <TextView
+        android:id="@+id/distanceView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Відстань: 0 км"
+        android:layout_marginStart="250dp"
+        android:layout_marginTop="660dp"
+        android:textSize="18sp"/>
+
+    <Button
+        android:id="@+id/zoomInButton"
+        android:layout_width="42dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="340dp"
+        android:layout_marginTop="460dp"
+        android:text="+" />
+    <Button
+        android:id="@+id/zoomOutButton"
+        android:layout_width="42dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="340dp"
+        android:layout_marginTop="500dp"
+        android:text="-" />
 
 </FrameLayout>

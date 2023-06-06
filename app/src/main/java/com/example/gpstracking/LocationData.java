@@ -7,6 +7,9 @@ public class LocationData {
     private double longitude;
     private long timestamp;
 
+
+
+
     // Required empty constructor for Firebase
     public LocationData() {
     }
@@ -49,4 +52,8 @@ public class LocationData {
     public void setTimestamp(long timestamp) {
         this.timestamp = timestamp;
     }
+
+
+
+
 }

@@ -4,6 +4,8 @@ import androidx.fragment.app.FragmentActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -22,6 +24,7 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
     private double latitude;
     private double longitude;
     private long timestamp;
+    private Button backtoMainButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +38,17 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
 
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+
+
+        backtoMainButton = findViewById(R.id.backToMainButton);
+        backtoMainButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MapActivity.this, MainActivity.class);
+                startActivity(intent);
+                finish(); // завершити поточну активність
+            }
+        });
     }
 
     @Override
